@@ -44,8 +44,8 @@ class AuthorServiceSpec extends Specification {
 
         then:
         authorList.size() == 2
-        authorList[0].name.contains("Test Author ")
-        authorList[0].name.contains("Test Author ")
+        authorList[0].name.contains("Test Author 2")
+        authorList[1].name.contains("Test Author 3")
     }
 
     void "test count"() {
@@ -70,9 +70,7 @@ class AuthorServiceSpec extends Specification {
     }
 
     void "test save"() {
-
         when:
-//        assert false, "TODO: Provide a valid instance to save"
         Author author = new Author(name: "Author").save(flush: true, failOnError: true)
         authorService.save(author)
 
