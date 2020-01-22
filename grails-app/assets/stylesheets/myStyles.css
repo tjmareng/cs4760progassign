@@ -1,0 +1,20 @@
+/* Change nav bar background color */
+.navbar {
+    background-color: blue;
+}
+
+body {
+
+}
+
+.container {
+    font-family: Consolas, Monaco, Lucida Console, monospace;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.tab {
+    margin-left: 40px;
+}
