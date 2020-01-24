@@ -1,9 +1,10 @@
 package cs4760progassign
 
+import grails.testing.gorm.DataTest
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class AuthorsControllerSpec extends Specification implements ControllerUnitTest<AuthorsController> {
+class AuthorsControllerSpec extends Specification implements ControllerUnitTest<AuthorsController>, DataTest {
     void setupSpec() {
         mockDomains Author, Book
     }
@@ -27,9 +28,9 @@ class AuthorsControllerSpec extends Specification implements ControllerUnitTest<
         model.authorList
         model.authorList.size == 3
         model.authorList == [
-                [title: "Title A", author: "Author A"],
-                [title: "Title B", author: "Author B"],
-                [title: "Title C", author: "Author C"]
+                [author: "Author A", books: ["Title A"]],
+                [author: "Author B", books: ["Title B"]],
+                [author: "Author C", books: ["Title C"]]
         ]
     } // End 'Test the index method returns the correct model'
 }
