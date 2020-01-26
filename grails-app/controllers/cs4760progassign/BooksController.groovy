@@ -1,5 +1,8 @@
 package cs4760progassign
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN'])
 class BooksController {
     static final boolean debugIndex = true
 

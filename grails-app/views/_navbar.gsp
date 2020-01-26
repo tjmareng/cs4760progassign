@@ -20,6 +20,11 @@
             <li class="nav-item"><g:link class="nav-link" controller="Books">Books</g:link></li>
             <li class="nav-item"><g:link class="nav-link" controller="Authors">Authors</g:link></li>
         </ul>
+        <sec:ifLoggedIn><li><a href="#"><sec:username/></a></li></sec:ifLoggedIn>
+        <li>
+            <sec:ifLoggedIn><g:link controller="Logout">log out</g:link></sec:ifLoggedIn>
+            <sec:ifNotLoggedIn><g:link controller="login" action="auth">Login</g:link></sec:ifNotLoggedIn>
+        </li>
     </div>
 
 </nav>
