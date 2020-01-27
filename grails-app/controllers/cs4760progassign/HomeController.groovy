@@ -10,4 +10,9 @@ class HomeController {
         if (debugTime) println "In showTime"
         render "The time is ${new Date()}"
     }
+
+    def recentBook() {
+        if (debugTime) println "In recentBook"
+        render "${Book.last()} by ${Book.last().author}"
+    }
 }
