@@ -11,6 +11,19 @@ function geoFindMe() {
         var longitude = position.coords.longitude;
 
         outputLatLong.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+        // Add map
+        var mymap = L.map('mapid').setView([latitude, longitude], 13);
+
+        var tileURL = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
+        var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        var maxZoom = 17
+
+        L.tileLayer(tileURL, {
+            attribution: attribution,
+            maxZoom: maxZoom
+        }).addTo(mymap);
+// end add map
     };
 
     function error() {
