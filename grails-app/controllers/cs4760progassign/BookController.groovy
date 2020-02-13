@@ -8,10 +8,11 @@ class BookController {
     BookService bookService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def debugCover = true
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond bookService.list(params), model:[bookCount: bookService.count()]
+        respond bookService.list(params), model: [bookCount: bookService.count()]
     }
 
     def show(Long id) {
@@ -31,7 +32,7 @@ class BookController {
         try {
             bookService.save(book)
         } catch (ValidationException e) {
-            respond book.errors, view:'create'
+            respond book.errors, view: 'create'
             return
         }
 
@@ -57,7 +58,7 @@ class BookController {
         try {
             bookService.save(book)
         } catch (ValidationException e) {
-            respond book.errors, view:'edit'
+            respond book.errors, view: 'edit'
             return
         }
 
@@ -66,7 +67,7 @@ class BookController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'book.label', default: 'Book'), book.id])
                 redirect book
             }
-            '*'{ respond book, [status: OK] }
+            '*' { respond book, [status: OK] }
         }
     }
 
@@ -81,10 +82,22 @@ class BookController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'book.label', default: 'Book'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
+    }
+
+    def showCover() {
+        println "In showCover"
+        if (debugCover) {
+            println " "
+            println "In showCover"
+            println "params.id: " + params.id
+        }
+        def book = Book.get(params.id)
+        response.outputStream << book.cover
+        response.outputStream.flush()
     }
 
     protected void notFound() {
@@ -93,7 +106,7 @@ class BookController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'book.label', default: 'Book'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
