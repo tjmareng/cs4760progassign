@@ -32,5 +32,14 @@
     <g:link controller="controllerList">Go to ControllerList</g:link>
 </p>
 
+<!-- Simple get location -->
+<p style="margin-top:20px"><button onclick="geoFindMe()">Show my location</button></p>
+
+<div id="latlong-out"></div>
+
+<div id="mapid" style="height: 400px; width: 400px;"></div>
+
+<asset:javascript src="geoloc.js"/>
+
 </body>
 </html>
