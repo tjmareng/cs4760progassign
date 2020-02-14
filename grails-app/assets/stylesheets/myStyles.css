@@ -18,3 +18,9 @@ body {
 .tab {
     margin-left: 40px;
 }
+
+img .bookCover {
+    max-width: 20%;
+    height: auto;
+    margin-left: 50px;
+}

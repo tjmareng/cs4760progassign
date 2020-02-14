@@ -21,6 +21,8 @@ class BooksController {
             bkAuthor.put('title', bks[i].title)
             bkAuthor.put('author', Author.get(bks[i].authorId).name)
             bkAuthor.put('id', bks[i].id)
+            bkAuthor.put('cover', bks[i].cover)
+            bkAuthor.put('publishYear', bks[i].publishYear)
             bkList << bkAuthor
         }
         if (debugIndex) {

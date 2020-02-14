@@ -14,12 +14,19 @@
 </head>
 
 <body>
-<h1> BOOKS </h1>
-<ul>
-    <g:each in="${bkList}">
-        <img id="bookCover" src="${it.cover}" class="img-thumbnail">
-        <li> ${it.title} by ${it.author} </li>
-    </g:each>
-</ul>
+<div class="container">
+    <p>Books</p>
+    <br>
+    <ul>
+        <g:each in="${bkList}">
+            <g:if test="${it?.cover}">
+                <img class="property-value bookCover" alt="Missing Cover"
+                     src="${createLink(controller: 'book', action: 'showCover', id: "${it?.id}")}">
+            </g:if>
+            <p>${it.title} (${it.publishYear}) by ${it.author}</p>
+            <br>
+        </g:each>
+    </ul>
+</div>
 </body>
 </html>

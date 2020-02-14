@@ -43,7 +43,6 @@
 </div>
 
 <p>Under construction</p>
-
 <p>
     <g:link controller="controllerList">Go to ControllerList</g:link>
 </p>
