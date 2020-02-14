@@ -19,11 +19,32 @@ function geoFindMe() {
         var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         var maxZoom = 17
 
-        L.tileLayer(tileURL, {
-            attribution: attribution,
-            maxZoom: maxZoom
+        var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
         }).addTo(mymap);
-// end add map
+
+        // L.tileLayer(tileURL, {
+        //     attribution: attribution,
+        //     maxZoom: maxZoom,
+        // }).addTo(mymap);
+        // end add map
+
+        // Add marker
+        var marker = L.marker([latitude, longitude], {
+            draggable: true,  // set true to enable dragging the marker
+            autoPan: false     // set true so the maps pans with the marker
+        }).addTo(mymap)
+        // end add marker
+
+        // Add listener for marker moved
+        function onMarkerMove(e) {
+            marker.bindPopup("Marker at " + e.latlng.toString()).openPopup();
+        }
+
+        marker.on('move', onMarkerMove);
+        // end add listener
     };
 
     function error() {
