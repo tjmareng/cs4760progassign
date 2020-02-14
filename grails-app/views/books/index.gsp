@@ -17,6 +17,7 @@
 <h1> BOOKS </h1>
 <ul>
     <g:each in="${bkList}">
+        <img id="bookCover" src="${it.cover}" class="img-thumbnail">
         <li> ${it.title} by ${it.author} </li>
     </g:each>
 </ul>

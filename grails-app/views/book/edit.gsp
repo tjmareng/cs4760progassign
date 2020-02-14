@@ -26,7 +26,7 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.book}" method="PUT">
+            <g:form resource="${this.book}" method="POST" enctype="multipart/form-data">
                 <g:hiddenField name="version" value="${this.book?.version}" />
                 <fieldset class="form">
                     <f:all bean="book"/>

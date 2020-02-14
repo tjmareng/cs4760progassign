@@ -20,6 +20,7 @@ class BooksController {
             def bkAuthor = [:]
             bkAuthor.put('title', bks[i].title)
             bkAuthor.put('author', Author.get(bks[i].authorId).name)
+            bkAuthor.put('id', bks[i].id)
             bkList << bkAuthor
         }
         if (debugIndex) {
